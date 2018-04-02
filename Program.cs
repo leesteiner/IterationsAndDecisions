@@ -205,6 +205,78 @@ namespace IterationsAndDecisions
             }
         }
 
+        static void ExecutePatternMatchingSwitch()
+        {
+            Console.WriteLine("1 [Integer (5)], 2 [String (\"Hi\")], 3 [Decimal (2.5)]");
+            Console.Write("Please choose an option: ");
+            string userChoice = Console.ReadLine();
+            object choice;
+            //This is a standard constant pattern switch statement to set up the example
+
+            switch (userChoice)
+            {
+                case "1":
+                    choice = 5;
+                    break;
+                case "2":
+                    choice = "Hi";
+                    break;
+                case "3":
+                    choice = 2.5;
+                    break;
+                default:
+                    break;
+
+            }
+
+            //This is now the pattern matching switch statement
+            switch (choice)
+            {
+                case int i:
+                    Console.WriteLine("Your choice is an integer {0}.",i);
+                    break;
+                case string s:
+                    Console.WriteLine("Your choice is a string {0}.", s);
+                    break;
+                case decimal d:
+                    Console.WriteLine("Your choice is a decimal {0}.", d);
+                    break;
+                default:
+                    Console.WriteLine("Your choice is something else");
+                    break;
+
+            }
+
+            Console.WriteLine();
+        }
+
+        static void ExecutePatternMatchingSwitchWithWhen()
+        {
+            Console.WriteLine("1 [C#], 2 [VB]");
+            Console.Write("Please pick your language preference: ");
+
+            object langChoice = Console.ReadLine();
+            var choice = int.TryParse(langChoice.ToString(), out int c) ? c : langChoice;
+
+            switch (choice)
+            {
+                case int i when i == 2:
+                case string s when s.Equals("VB", StringComparison.OrdinalIgnoreCase):
+                    Console.WriteLine("VB: OOP, Multithreading, and more!");
+                    break;
+
+                case int i when i == 1:
+                case string s when s.Equals("C#", StringComparison.OrdinalIgnoreCase):
+                    Console.WriteLine("C#: Good choice. Fine language");
+                    break;
+                default:
+                    Console.WriteLine("Well, good luck with that!");
+                    break;
+            }
+            Console.WriteLine();
+        }
+
+
       
     }
 }
