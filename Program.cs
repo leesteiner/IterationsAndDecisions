@@ -191,7 +191,20 @@ namespace IterationsAndDecisions
 
         static void SwitchWithGoto()
         {
+            var foo = 5;
+            switch (foo) {
+                case 1:
+                    //do something
+                    goto case 2;
+                case 2:
+                    // do something else
+                    break;
 
+                default:
+                    break;
+            }
         }
+
+      
     }
 }
